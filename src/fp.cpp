@@ -467,16 +467,16 @@ fp2::fp2(const fp2& e) : c0(e.c0), c1(e.c1)
 
 optional<fp2> fp2::fromBytesBE(const span<const uint8_t, 96> in, const conv_opt opt)
 {
-    optional<fp> c1 = fp::fromBytesBE(span<const uint8_t, 48>(&in[ 0], &in[48]), opt);
-    optional<fp> c0 = fp::fromBytesBE(span<const uint8_t, 48>(&in[48], &in[96]), opt);
+    optional<fp> c1 = fp::fromBytesBE(span<const uint8_t, 48>(&in[ 0], 48), opt);
+    optional<fp> c0 = fp::fromBytesBE(span<const uint8_t, 48>(&in[48], 48), opt);
     if(!c1 || !c0) return {};
     return fp2({*c0, *c1});
 }
 
 optional<fp2> fp2::fromBytesLE(const span<const uint8_t, 96> in, const conv_opt opt)
 {
-    optional<fp> c0 = fp::fromBytesLE(span<const uint8_t, 48>(&in[ 0], &in[48]), opt);
-    optional<fp> c1 = fp::fromBytesLE(span<const uint8_t, 48>(&in[48], &in[96]), opt);
+    optional<fp> c0 = fp::fromBytesLE(span<const uint8_t, 48>(&in[ 0], 48), opt);
+    optional<fp> c1 = fp::fromBytesLE(span<const uint8_t, 48>(&in[48], 48), opt);
     if(!c1 || !c0) return {};
     return fp2({*c0, *c1});
 }
